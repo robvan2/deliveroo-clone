@@ -6,19 +6,22 @@ import { urlFor } from '../sanity'
 
 const FeaturedRow = ({id, title, description, restaurants}) => {
   return (
-    <View className="pt-1 px-4">
-        <View className="mt-4 flex-row items-center">
-            <Text className="text-lg font-bold flex-1">
-                {title}
+    <View className="pt-1 px-3">
+        <View className="px-1">
+            <View className="mt-4 flex-row items-center">
+                <Text className="text-lg font-bold flex-1">
+                    {title}
+                </Text>
+                <ArrowRightIcon color="#00CCBB" size={25}/>
+            </View>
+            <Text className="text-xs text-gray-400">
+                {description}
             </Text>
-            <ArrowRightIcon color="#00CCBB" size={25}/>
         </View>
-        <Text className="text-xs text-gray-400 pb-2">
-            {description}
-        </Text>
         <ScrollView 
             horizontal
             showsHorizontalScrollIndicator={false}
+            className="py-1"
         >
             {restaurants?.map(restaurant => <RestaurantCard
                 key={restaurant._id}

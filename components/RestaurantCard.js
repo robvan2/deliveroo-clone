@@ -31,7 +31,7 @@ const RestaurantCard = ({
                 long,
                 lat
             })
-        }} className="rounded bg-white shadow-lg overflow-hidden w-64 mr-3">
+        }} className="rounded bg-white shadow-sm overflow-hidden w-64 mr-3">
             <Image
                 source={{
                     uri: imgUrl

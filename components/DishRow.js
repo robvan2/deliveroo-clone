@@ -1,8 +1,10 @@
 import { View, Text, Image, TouchableOpacity } from 'react-native'
 import React, { useState } from 'react'
 import { urlFor } from '../sanity'
-import { MinusIcon, PlusIcon } from 'react-native-heroicons/solid'
+import { MinusCircleIcon, MinusIcon, PlusCircleIcon, PlusIcon } from 'react-native-heroicons/solid'
 import CurrencyFormat from 'react-currency-format'
+import { useDispatch, useSelector } from 'react-redux'
+import { addToBasket, removeFromBasket, selectBasketItemsWithId } from '../slices/basketSlice'
 
 /**
  * It returns a View component that contains a Text component.
@@ -16,6 +18,22 @@ const DishRow = ({
     price,
 }) => {
     const [isPressed, setIsPressed] = useState(false)
+    const dispatch                  = useDispatch()
+    const items                     = useSelector((state) => selectBasketItemsWithId(state, id))
+
+    const addItemToBasket = () => {
+        dispatch(addToBasket({
+            id,
+            name,
+            description,
+            image,
+            price,
+        }))
+    }
+    const removeItemFromBasket = () => {
+        if(items.length < 1) return;
+        dispatch(removeFromBasket({id}))
+    }
     return (
         <TouchableOpacity onPress={() => setIsPressed(!isPressed)} className="flex-row space-x-1 p-4 items-start bg-white border-b border-gray-300">
             <View className="flex-1" >
@@ -30,14 +48,17 @@ const DishRow = ({
                 
                 {isPressed &&
                     <View className="flex-row items-center space-x-2 mt-3">
-                        <TouchableOpacity className="rounded-full items-center justify-center h-8 w-8 shadow-sm bg-green-500">
-                            <MinusIcon size={24} color="white" />
+                        <TouchableOpacity
+                            disabled={!items.length}
+                            onPress={removeItemFromBasket}
+                        >
+                            <MinusCircleIcon size={35} color={items.length > 0 ? "#00CCBB" : "gray"} />
                         </TouchableOpacity>
                         <Text>
-                            0
+                            {items.length}
                         </Text>
-                        <TouchableOpacity className="rounded-full items-center justify-center h-8 w-8 shadow-sm bg-green-500">
-                            <PlusIcon size={24} color="white" />
+                        <TouchableOpacity onPress={addItemToBasket}>
+                            <PlusCircleIcon size={35} color="#00CCBB" />
                         </TouchableOpacity>
                     </View>
                 }

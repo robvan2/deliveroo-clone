@@ -16,6 +16,7 @@ const DishRow = ({
     description,
     image,
     price,
+    restaurant_id
 }) => {
     const [isPressed, setIsPressed] = useState(false)
     const dispatch                  = useDispatch()
@@ -28,12 +29,14 @@ const DishRow = ({
             description,
             image,
             price,
+            restaurant_id
         }))
     }
     const removeItemFromBasket = () => {
         if(items.length < 1) return;
-        dispatch(removeFromBasket({id}))
+        dispatch(removeFromBasket({id, restaurant_id}))
     }
+    
     return (
         <TouchableOpacity onPress={() => setIsPressed(!isPressed)} className="flex-row space-x-1 p-4 items-start bg-white border-b border-gray-300">
             <View className="flex-1" >

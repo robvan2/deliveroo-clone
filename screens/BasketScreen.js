@@ -40,7 +40,7 @@ const BasketScreen = () => {
 	}  
 
 	return (
-		<SafeAreaView style={SafeViewAndroid.AndroidSafeArea}>
+		<SafeAreaView style={SafeViewAndroid.AndroidSafeArea} className="bg-white flex-1">
 			<View className="flex-1 bg-gray-100 relative">
 				<View className="bg-white py-2 pb-5 relative border-b border-[#00CCBB] shadow-sm">
 					<Text className="font-extrabold text-xl text-center">
@@ -68,7 +68,9 @@ const BasketScreen = () => {
 						</Text>
 					</TouchableOpacity>
 				</View>
-				<ScrollView>
+				<ScrollView contentContainerStyle={{
+					paddingBottom: 25,
+				}}>
 					{Object.entries(groupedItemsInBasket).map(([key, dishes]) => <BasketDishRow key={key} id = {dishes[0]?.id}
 																	name = {dishes[0]?.name}
 																	image = {dishes[0]?.image}
@@ -77,7 +79,7 @@ const BasketScreen = () => {
 																	restaurant_id = {restaurant.id}
 																	onRemove={removeItemFromBasket} />)}
 				</ScrollView>
-				<View className="absolute bottom-0 left-0 right-0 bg-white py-4 px-6 pb-6 shadow-sm space-y-2">
+				<View className="fixed bottom-0 left-0 right-0 bg-white py-4 px-6 pb-6 shadow space-y-2">
 					<View className="flex-row">
 						<Text className="text-xs text-gray-400 flex-1">
 							Subtotal
@@ -96,7 +98,7 @@ const BasketScreen = () => {
 						</Text>
 						<CurrencyFormat value={Number(subtotal + 5.99).toFixed(2)} displayType={'text'} thousandSeparator={true} prefix={'€'} renderText={value => <Text className="text-xs font-bold">{value}</Text>} />
 					</View>
-					<TouchableOpacity className="flex-1 rounded-sm bg-[#00CCBB] shadow-sm p-2 mt-2">
+					<TouchableOpacity onPress={() => navigation.navigate("PreparingOrderScreen")} className="flex-1 rounded-sm bg-[#00CCBB] shadow-sm p-2">
 						<Text className="text-xl font-extrabold text-white text-center">
 							Place Order
 						</Text>

@@ -34,7 +34,7 @@ const HomeScreen = () => {
     }, [])
    
     return (
-        <SafeAreaView style={SafeViewAndroid.AndroidSafeArea} className="bg-white">
+        <SafeAreaView style={SafeViewAndroid.AndroidSafeArea} className="bg-white flex-1">
             {/* Header */}
             <View className="flex-row items-center pb-3 space-x-2 mx-4">
                 <Image source={{

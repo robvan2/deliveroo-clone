@@ -25,7 +25,15 @@
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#FFFFFF"
       },
-      "package": "com.robvan2.deliverooclone"
+      "package": "com.robvan2.deliverooclone",
+      "config": {
+        "googleMaps": {
+          "apiKey": "AIzaSyCyq8XqaVSDviVsG_t80PGy3OKlyeQsQ2Y"
+        }
+      }
+    },
+    "androidStatusBar": {
+      "translucent": true
     },
     "web": {
       "favicon": "./assets/favicon.png"
@@ -33,6 +41,13 @@
     "extra": {
       "eas": {
         "projectId": "52e48a9c-35c7-46be-a2bd-134d5e276c3f"
+      }
+    }
+  },
+  "android": {
+    "config":{
+      "googleMaps": {
+        "apiKey": "AIzaSyCyq8XqaVSDviVsG_t80PGy3OKlyeQsQ2Y"
       }
     }
   }

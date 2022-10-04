@@ -8,6 +8,7 @@ import store from './store';
 import BasketScreen from "./screens/BasketScreen";
 import PreparingOrderScreen from "./screens/PreparingOrderScreen";
 import DeliveryScreen from "./screens/DeliveryScreen";
+import { StatusBar } from "expo-status-bar";
 
 const Stack = createNativeStackNavigator();
 
@@ -37,6 +38,7 @@ export default function App() {
 					</Stack.Navigator>
 				</TailwindProvider>
 			</Provider>
+			<StatusBar translucent={true} animated={true}/>
 		</NavigationContainer>
 	);
 }

@@ -12,7 +12,6 @@ const DeliveryScreen = () => {
     const navigation = useNavigation();
     const {restaurant} = useSelector(selectRestaurant)
 
-    console.log(restaurant);
     return (
         <View className="flex-1 bg-[#00CCBB]">
             <SafeAreaView style={SafeViewAndroid.AndroidSafeArea} className="z-50">
@@ -70,7 +69,7 @@ const DeliveryScreen = () => {
                 />
             </MapView>
 
-            <SafeAreaView className="bg-white flex-row p-4 shadow-md items-center space-x-2">
+            <View className="bg-white flex-row p-4 shadow-md items-center space-x-2">
                 <Image source={{
                     uri: 'https://links.papareact.com/wru'
                 }}
@@ -87,7 +86,7 @@ const DeliveryScreen = () => {
                         Call
                     </Text>
                 </TouchableOpacity>
-            </SafeAreaView>
+            </View>
         </View>
     )
 }

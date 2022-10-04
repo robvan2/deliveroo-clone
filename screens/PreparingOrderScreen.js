@@ -15,7 +15,7 @@ const PreparingOrderScreen = () => {
     }, [])
     
     return (
-        <SafeAreaView style={SafeViewAndroid.AndroidSafeArea} className="flex-1 bg-[#00CCBB] justify-center items-center">
+        <SafeAreaView className="flex-1 bg-[#00CCBB] justify-center items-center">
             <AnimatedImage
                 source={require('../assets/loading.gif')}
                 animation="slideInUp"

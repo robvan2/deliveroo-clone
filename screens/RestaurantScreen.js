@@ -49,13 +49,13 @@ const RestaurantScreen = () => {
     }, [])
     
     return (
-        <>
+        <View className="flex-1">
             <ScrollView className="bg-gray-100">
                 <View className="relative w-full h-56">
                     <Image source={{
                         uri: imgUrl
                     }} className="absolute top-0 left-0 right-0 bottom-0" />
-                    <TouchableOpacity onPress={navigation.goBack} className="absolute top-12 left-4 rounded-full bg-gray-100 p-2 shadow-md">
+                    <TouchableOpacity onPress={navigation.goBack} className="absolute top-10 left-4 rounded-full bg-gray-100 p-2 shadow-md">
                         <ArrowLeftIcon size={20} color="#00CCBB" />
                     </TouchableOpacity>
                 </View>
@@ -109,7 +109,7 @@ const RestaurantScreen = () => {
             <View className="absolute bottom-4 w-full px-4 z-50">
                 <BasketPopup restaurant_id={id} />
             </View>
-        </>
+        </View>
     )
 }
 
